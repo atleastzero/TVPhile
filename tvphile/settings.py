@@ -37,9 +37,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
-    'accounts',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+
+    'django_extensions',
+
+    'shows',
 ]
+
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,6 +80,12 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 
 WSGI_APPLICATION = 'tvphile.wsgi.application'
 
